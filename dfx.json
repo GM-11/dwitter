@@ -1,0 +1,30 @@
+{
+  "canisters": {
+    "dwitter_backend": {
+      "candid": "src/dwitter_backend/dwitter_backend.did",
+      "package": "dwitter_backend",
+      "type": "rust"
+    },
+    "dwitter_frontend": {
+      "dependencies": [
+        "dwitter_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/dwitter_frontend/src/index.html"
+      },
+      "source": [
+        "src/dwitter_frontend/assets",
+        "dist/dwitter_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
