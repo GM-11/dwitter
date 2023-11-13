@@ -1,3 +1,20 @@
+type Dweet = record {
+    content : text;
+    timestamp : nat;
+    principal_text : text;
+    image_bas64: text;
+};
+type Topic = record {
+    title : text;
+    dweets : vec Dweet;
+    id : nat;
+};
 service : {
-    "greet": (text) -> (text) query;
-}
+    "add_topic" : (text) -> ();
+    // "add_dweet_to_topic" : (nat, text, text, text, text) -> ();
+    "add_dweet_to_topic" : (nat, text, text, text) -> ();
+    "get_all_topics" : () -> (vec Topic) query;
+    "get_dweets_of_topic" : (nat) -> (vec Dweet) query;
+    "whoami" : () -> (principal);
+
+};

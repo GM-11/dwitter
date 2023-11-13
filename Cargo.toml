@@ -2,3 +2,4 @@
 members = [
     "src/dwitter_backend",
 ]
+resolver = "2"
