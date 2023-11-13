@@ -1,4 +1,4 @@
-import React,  { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { dwitter_backend } from "../../../declarations/dwitter_backend/index";
 import Modal from "../components/addDweetModal";
@@ -24,10 +24,9 @@ function Dweets() {
     modalOpen(false);
   }
 
-
   return (
     <>
-      {open && <Modal closeModal={closeModal} />}
+      {open && <Modal closeModal={closeModal} id={id} />}
       <button onClick={openModal} className="fab">
         +
       </button>

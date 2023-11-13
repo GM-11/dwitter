@@ -18,7 +18,9 @@ function LandingPage() {
           process.env.DFX_NETWORK === "ic"
             ? "https://identity.ic0.app"
             : `http://127.0.0.1:4943/?canisterId=rdmx6-jaaaa-aaaaa-aaadq-cai`,
-        onSuccess: resolve,
+        onSuccess: () => {
+          resolve(null);
+        },
       });
     });
     const identity = authClient.getIdentity();
@@ -40,15 +42,15 @@ function LandingPage() {
       <div>
         <h1>DWITTER</h1>
         <h2>Your decentralized dweet space</h2>
-        {
-          principal === "Not connected" ? (
-            <button onClick={loadIdentity}>Connect your Internet Identity using ICP</button>
-          ) : (
-            <Link to="/home">
-              <button>Home</button>
-            </Link>
-          )
-        }
+        {principal === "Not connected" ? (
+          <button onClick={loadIdentity}>
+            Connect your Internet Identity using ICP
+          </button>
+        ) : (
+          <Link to="/home">
+            <button>Home</button>
+          </Link>
+        )}
         <h2>Internet Identity: {principal}</h2>
       </div>
       <div>

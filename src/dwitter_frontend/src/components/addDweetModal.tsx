@@ -1,11 +1,11 @@
 import { dwitter_backend } from "../../../declarations/dwitter_backend";
 import React, { useState } from "react";
 
-function addDweetModal({ closeModal }) {
+function addDweetModal({ closeModal, id }) {
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [imageBas64, setImageBas64] = useState(null);
+  // const [selectedImage, setSelectedImage] = useState(null);
+  // const [imageBas64, setImageBas64] = useState(null);
 
   async function submitTopic() {
     setLoading(true);
@@ -13,13 +13,14 @@ function addDweetModal({ closeModal }) {
 
     const principal = await dwitter_backend.whoami();
 
+    const dweets = await dwitter_backend.get_dweets_of_topic(BigInt(id));
+
     const timestamp = Date.now();
     await dwitter_backend.add_dweet_to_topic(
-      BigInt(34),
+      BigInt(dweets.length + 1),
       title,
-      `${timestamp}`,
+      timestamp.toString(),
       principal.toString(),
-      imageBas64
     );
     setTitle("");
     setLoading(false);
