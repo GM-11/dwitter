@@ -2,7 +2,6 @@ type Dweet = record {
     content : text;
     timestamp : nat;
     principal_text : text;
-    image_bas64: text;
 };
 type Topic = record {
     title : text;

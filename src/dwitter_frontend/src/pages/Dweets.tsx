@@ -9,7 +9,7 @@ function Dweets() {
 
   useEffect(() => {
     async function loadDweets() {
-      const dweets = await dwitter_backend.get_dweets_of_topic(BigInt(id));
+      const dweets = await dwitter_backend.get_dweets_of_topic(BigInt(parseInt(id)));
       setDweets(dweets);
     }
 
@@ -21,12 +21,14 @@ function Dweets() {
   }
 
   async function closeModal() {
+    const dweets = await dwitter_backend.get_dweets_of_topic(BigInt(parseInt(id)));
+    setDweets(dweets);
     modalOpen(false);
   }
 
   return (
     <>
-      {open && <Modal closeModal={closeModal} id={id} />}
+      {open && <Modal closeModal={closeModal} id={parseInt(id)} />}
       <button onClick={openModal} className="fab">
         +
       </button>

@@ -12,6 +12,7 @@ function addTopicModal({ closeModal }) {
     await dwitter_backend.add_topic(title);
     setTitle("");
     setLoading(false);
+    closeModal()
   }
   return (
     <div className="modal">

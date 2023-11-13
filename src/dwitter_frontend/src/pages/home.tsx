@@ -16,13 +16,13 @@ function Home() {
     modalOpen(true);
   }
 
-  async function func(title, slug) {
-    await dwitter_backend.add_topic(title);
-    modalOpen(false);
-    const topics = await dwitter_backend.get_all_topics();
-    settopics(topics);
+  // async function func(title, slug) {
+  //   await dwitter_backend.add_topic(title);
+  //   modalOpen(false);
+  //   const topics = await dwitter_backend.get_all_topics();
+  //   settopics(topics);
 
-  }
+  // }
 
   async function closeModal() {
     modalOpen(false);
